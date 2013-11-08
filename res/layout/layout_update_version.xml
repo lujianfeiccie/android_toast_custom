@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/tips_bg"
+    android:gravity="center" >
+
+    <View
+        android:layout_width="220.0dip"
+        android:layout_height="140.0dip"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/upgrade"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:text="软件升级" />
+            
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loading_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:lineSpacingExtra="3.0dip"
+            android:text="发现新版本,建议立即更新使用."
+            android:textColor="#ffffff"
+            android:textSize="17.0sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/load_ok"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="#10c3f1"
+                android:layout_margin="5dp"
+                android:text="更新" >
+            </Button>
+
+            <Button
+                android:id="@+id/load_cancel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_margin="5dp"
+                android:text="取消" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 public class MainActivity extends Activity implements OnClickListener{
 
 	LoadingDialog mLoadingDialog = null;
+	updateVersion mupdateVersion = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,7 +21,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		findViewById(R.id.bt_righttips).setOnClickListener(this);
 		findViewById(R.id.bt_wrongtips).setOnClickListener(this);
 		findViewById(R.id.bt_network_error).setOnClickListener(this);
+		findViewById(R.id.bt_udpate_dialog).setOnClickListener(this);
 		mLoadingDialog = new LoadingDialog(this);
+		mupdateVersion = new updateVersion(this);
+		mupdateVersion.setOnClickListener(this);
 	}
 
 	@Override
@@ -46,6 +50,16 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.bt_network_error:
 			ToastDialog.show(this,"网络错误提示",DialogType.NO_NETWORK);
+			break;
+		case R.id.bt_udpate_dialog:
+			mupdateVersion.show();
+			break;
+		//更新对话框
+		case R.id.load_ok: //点击OK
+			mupdateVersion.dismiss();
+			break;
+		case R.id.load_cancel: //点击不OK
+			mupdateVersion.dismiss();
 			break;
 		}
 	}
