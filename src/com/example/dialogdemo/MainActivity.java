@@ -1,16 +1,21 @@
 package com.example.dialogdemo;
 
-import com.example.dialogdemo.ToastDialog.DialogType;
+import java.lang.ref.WeakReference;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+
+import com.example.dialogdemo.TipsToast.DialogType;
 
 public class MainActivity extends Activity implements OnClickListener{
 
+	Handler mhandler ;
 	LoadingDialog mLoadingDialog = null;
 	updateVersion mupdateVersion = null;
 	@Override
@@ -22,7 +27,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		findViewById(R.id.bt_wrongtips).setOnClickListener(this);
 		findViewById(R.id.bt_network_error).setOnClickListener(this);
 		findViewById(R.id.bt_udpate_dialog).setOnClickListener(this);
+		mhandler = new Handler();
 		mLoadingDialog = new LoadingDialog(this);
+		mLoadingDialog.setMessage("加载中asas");
 		mupdateVersion = new updateVersion(this);
 		mupdateVersion.setOnClickListener(this);
 	}
@@ -40,16 +47,16 @@ public class MainActivity extends Activity implements OnClickListener{
 		switch(v.getId()){
 		case R.id.bt_waittips:
 			mLoadingDialog.show();
-			mhandler.postDelayed(hideTask, 1000);
+			mhandler.postDelayed(new hideTask(), 1000);
 			break;
 		case R.id.bt_righttips:
-			ToastDialog.show(this,"正确提示",DialogType.LOAD_SUCCESS);
+			TipsToast.makeText(this, "正确提示", Toast.LENGTH_SHORT, DialogType.LOAD_SUCCESS).show();
 			break;
 		case R.id.bt_wrongtips:
-			ToastDialog.show(this,"错误提示",DialogType.LOAD_FAILURE);
+			TipsToast.makeText(this, "错误提示", Toast.LENGTH_SHORT, DialogType.LOAD_FAILURE).show();
 			break;
 		case R.id.bt_network_error:
-			ToastDialog.show(this,"网络错误提示",DialogType.NO_NETWORK);
+			TipsToast.makeText(this, "网络错误提示", Toast.LENGTH_SHORT, DialogType.NO_NETWORK).show();
 			break;
 		case R.id.bt_udpate_dialog:
 			mupdateVersion.show();
@@ -64,12 +71,21 @@ public class MainActivity extends Activity implements OnClickListener{
 		}
 	}
 
-	Handler mhandler = new Handler();
-	Runnable hideTask = new Runnable(){
+	class hideTask implements Runnable{
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			mLoadingDialog.hide();
+			//mhandler.removeCallbacks(this);
 		}
-	};
+	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		//mhandler.removeCallbacks(hideTask);
+		//mLoadingDialog = null;
+		//mupdateVersion = null;
+	}
+	
 }

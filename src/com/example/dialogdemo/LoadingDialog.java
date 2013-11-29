@@ -1,6 +1,6 @@
 package com.example.dialogdemo;
 
-import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -11,7 +11,7 @@ import android.widget.TextView;
  * 
  * @author xm
  */
-public class LoadingDialog extends AlertDialog {
+public class LoadingDialog extends ProgressDialog {
 
     private TextView tips_loading_msg;
 
@@ -19,7 +19,7 @@ public class LoadingDialog extends AlertDialog {
 
     public LoadingDialog(Context context) {
         super(context);
-        message = "加载中。。。";
+        message = "加载中";
     }
 
     public LoadingDialog(Context context, String message) {
@@ -41,14 +41,12 @@ public class LoadingDialog extends AlertDialog {
         tips_loading_msg = (TextView) findViewById(R.id.tips_loading_msg);
         tips_loading_msg.setText(this.message);
     }
-
-    public void setText(String message) {
-        this.message = message;
-        tips_loading_msg.setText(this.message);
+    public void setMessage(String message) {
+		this.message = message;
+	}
+    @Override
+    public void setMessage(CharSequence message) {
+    	// TODO Auto-generated method stub
+    	this.message = message.toString();
     }
-
-    public void setText(int resId) {
-        setText(getContext().getResources().getString(resId));
-    }
-
 }
