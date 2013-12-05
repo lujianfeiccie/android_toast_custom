@@ -1,11 +1,8 @@
 package com.example.dialogdemo;
 
-import java.lang.ref.WeakReference;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +15,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	Handler mhandler ;
 	LoadingDialog mLoadingDialog = null;
 	updateVersion mupdateVersion = null;
+	private BarLoading loadingBar=null;
+	boolean toggle = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,6 +26,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		findViewById(R.id.bt_wrongtips).setOnClickListener(this);
 		findViewById(R.id.bt_network_error).setOnClickListener(this);
 		findViewById(R.id.bt_udpate_dialog).setOnClickListener(this);
+		findViewById(R.id.bt_waitingtips_on_ui).setOnClickListener(this);
+		
+		loadingBar=(BarLoading) findViewById(R.id.progress_loadingbar);
+		loadingBar.setVisibility(View.VISIBLE);
 		mhandler = new Handler();
 		mLoadingDialog = new LoadingDialog(this);
 		mLoadingDialog.setMessage("加载中asas");
@@ -67,6 +70,15 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.load_cancel: //点击不OK
 			mupdateVersion.dismiss();
+			break;
+		case R.id.bt_waitingtips_on_ui:{
+			toggle=!toggle;
+			if(toggle){
+				loadingBar.start();
+			}else{
+				loadingBar.stop();
+			}
+		}
 			break;
 		}
 	}

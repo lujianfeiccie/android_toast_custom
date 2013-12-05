@@ -16,5 +16,19 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+      <!-- BasicLoading -->
+    <declare-styleable name="BasicLoading">
+        <attr name="duration" format="integer"/>
+        <attr name="title" format="string"/>
+    </declare-styleable>
+    
+    <!-- BarLoading -->
+    <declare-styleable name="BarLoading" >
+        <attr name="points" format="integer" />
+        <attr name="animation_before" format="reference" />
+        <attr name="animation_after" format="reference" />
+    </declare-styleable>
+    
 
 </resources>

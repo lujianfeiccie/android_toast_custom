@@ -3,7 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-     >
+     xmlns:app="http://schemas.android.com/apk/res/com.example.dialogdemo">
+	<com.example.dialogdemo.BarLoading
+	    android:id="@+id/progress_loadingbar"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:animation_after="@drawable/ss_hover"
+        app:animation_before="@drawable/ss_normal"
+        app:title="正在加载"
+        app:points="5"
+	    />
     <Button
         android:id="@+id/bt_waittips"
         android:layout_width="fill_parent"
@@ -34,4 +45,10 @@
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:text="更新提示对话框" />
+    <Button
+        android:id="@+id/bt_waitingtips_on_ui"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="等待提示动画" />
 </LinearLayout>
