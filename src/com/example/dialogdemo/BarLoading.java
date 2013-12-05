@@ -50,6 +50,9 @@ public class BarLoading extends BasicLoading{
 	
 	private TaskThread thread=null;
 	
+	private final int HANDLE_FLAG_START = 0;
+	private final int HANDLE_FLAG_END = 1;
+	
 	public BarLoading(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		TypedArray ta = context.obtainStyledAttributes(attrs,
@@ -141,13 +144,26 @@ public class BarLoading extends BasicLoading{
 	@Override
 	protected void handle(Message msg) {
 		// TODO Auto-generated method stub
-		lastIndex=currIndex;
-		currIndex++;
-		if(currIndex==points){
-			reset();
+		switch (msg.what) {
+		case HANDLE_FLAG_START://doing
+			{
+			lastIndex=currIndex;
+			currIndex++;
+			if(currIndex==points){
+				reset();
+			}
+			pointers[lastIndex].setImageDrawable(animation_before);
+			pointers[currIndex].setImageDrawable(animation_after);
 		}
-		 pointers[lastIndex].setImageDrawable(animation_before);
-		 pointers[currIndex].setImageDrawable(animation_after);
+			break;
+		case HANDLE_FLAG_END://end
+		{
+				pointers[currIndex].setImageDrawable(animation_before);
+		}
+			break;
+		default:
+			break;
+		}
 	}
 				
 	/**
@@ -165,8 +181,9 @@ public class BarLoading extends BasicLoading{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				handler.sendEmptyMessage(0);
+				handler.sendEmptyMessage(HANDLE_FLAG_START);
 			}
+			handler.sendEmptyMessage(HANDLE_FLAG_END);
 		}
 	}
 
