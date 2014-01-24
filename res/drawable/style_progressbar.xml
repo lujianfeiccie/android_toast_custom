@@ -4,4 +4,5 @@
 	android:drawable="@drawable/loading_02"
 	android:pivotX="50%"
 	android:pivotY="50%" 
-	/>
+	>
+	</animated-rotate>

@@ -34,12 +34,6 @@
         android:padding="20dp"
         android:text="错误提示" />
     <Button
-        android:id="@+id/bt_network_error"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="网络问题" />
-    <Button
         android:id="@+id/bt_udpate_dialog"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

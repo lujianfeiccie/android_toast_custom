@@ -2,7 +2,12 @@ package com.example.dialogdemo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -19,7 +24,7 @@ public class LoadingDialog extends ProgressDialog {
 
     public LoadingDialog(Context context) {
         super(context);
-        message = "加载中";
+        message = "加载中...";
     }
 
     public LoadingDialog(Context context, String message) {
@@ -41,6 +46,8 @@ public class LoadingDialog extends ProgressDialog {
         tips_loading_msg = (TextView) findViewById(R.id.tips_loading_msg);
         tips_loading_msg.setText(this.message);
     }
+    
+    
     public void setMessage(String message) {
 		this.message = message;
 	}
@@ -49,4 +56,5 @@ public class LoadingDialog extends ProgressDialog {
     	// TODO Auto-generated method stub
     	this.message = message.toString();
     }
+    
 }

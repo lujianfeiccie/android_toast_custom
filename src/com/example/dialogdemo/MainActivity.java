@@ -24,7 +24,6 @@ public class MainActivity extends Activity implements OnClickListener{
 		findViewById(R.id.bt_waittips).setOnClickListener(this);
 		findViewById(R.id.bt_righttips).setOnClickListener(this);
 		findViewById(R.id.bt_wrongtips).setOnClickListener(this);
-		findViewById(R.id.bt_network_error).setOnClickListener(this);
 		findViewById(R.id.bt_udpate_dialog).setOnClickListener(this);
 		findViewById(R.id.bt_waitingtips_on_ui).setOnClickListener(this);
 		
@@ -32,7 +31,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		loadingBar.setVisibility(View.VISIBLE);
 		mhandler = new Handler();
 		mLoadingDialog = new LoadingDialog(this);
-		mLoadingDialog.setMessage("加载中asas");
+		mLoadingDialog.setMessage("加载中...");
 		mupdateVersion = new updateVersion(this);
 		mupdateVersion.setOnClickListener(this);
 	}
@@ -50,16 +49,13 @@ public class MainActivity extends Activity implements OnClickListener{
 		switch(v.getId()){
 		case R.id.bt_waittips:
 			mLoadingDialog.show();
-			mhandler.postDelayed(new hideTask(), 1000);
+			mhandler.postDelayed(new hideTask(), 3000);
 			break;
 		case R.id.bt_righttips:
 			TipsToast.makeText(this, "正确提示", Toast.LENGTH_SHORT, DialogType.LOAD_SUCCESS).show();
 			break;
 		case R.id.bt_wrongtips:
 			TipsToast.makeText(this, "错误提示", Toast.LENGTH_SHORT, DialogType.LOAD_FAILURE).show();
-			break;
-		case R.id.bt_network_error:
-			TipsToast.makeText(this, "网络错误提示", Toast.LENGTH_SHORT, DialogType.NO_NETWORK).show();
 			break;
 		case R.id.bt_udpate_dialog:
 			mupdateVersion.show();

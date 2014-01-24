@@ -38,9 +38,9 @@ public class TipsToast extends Toast {
   	private static void setType(DialogType type,ImageView loading_img) {
   		switch (type) {
 
-  		case NO_NETWORK:// 无网络
+  		/*case NO_NETWORK:// 无网络
   			loading_img.setBackgroundResource(R.drawable.unknown);
-  			break;
+  			break;*/
   		case LOAD_SUCCESS:// 加载成功
   			loading_img.setBackgroundResource(R.drawable.success);
   			break;
@@ -52,6 +52,6 @@ public class TipsToast extends Toast {
   		}
   	}
   	public enum DialogType{
-		NO_NETWORK, LOAD_SUCCESS, LOAD_FAILURE
+		 LOAD_SUCCESS, LOAD_FAILURE
 	}
 }
